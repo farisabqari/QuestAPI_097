@@ -11,7 +11,6 @@ import retrofit2.Retrofit
 interface AppContainer{
     val mahasiswaRepository: MahasiswaRepository
 }
-
 class MahasiswaContainer : AppContainer{
     private val baseUrl = "http://10.0.2.2/umyTI/"
     private val json = Json { ignoreUnknownKeys = true }
