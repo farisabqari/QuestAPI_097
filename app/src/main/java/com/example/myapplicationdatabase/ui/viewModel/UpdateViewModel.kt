@@ -25,7 +25,6 @@ class UpdateViewModel(
                 .toUiStateMhs()
         }
     }
-
     fun updateInsertMhsState(insertUiEvent: InsertUiEvent){
         updateUiState = InsertUiState(insertUiEvent = insertUiEvent)
     }
