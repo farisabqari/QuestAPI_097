@@ -137,3 +137,18 @@ fun OnLoading(modifier: Modifier = Modifier){
         contentDescription = stringResource(R.string.loading)
     )
 }
+
+@Composable
+fun OnError(retryAction: () -> Unit, modifier: Modifier = Modifier){
+    Column (
+        modifier = modifier,
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ){
+        Image(painter = painterResource(id = R.drawable.nokoneksi), contentDescription = "")
+        Text(text = stringResource(R.string.loading), modifier = Modifier.padding(16.dp))
+        Button(onClick = retryAction) {
+            Text(stringResource(R.string.retry))
+        }
+    }
+}
