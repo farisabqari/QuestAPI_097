@@ -15,7 +15,6 @@ import com.example.myapplicationdatabase.Navigasi.PengelolaHalaman
 @Composable
 fun MahasiswaApp() {
     val scrollBehavior= TopAppBarDefaults.enterAlwaysScrollBehavior()
-
     Scaffold (
         modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
     ) {
