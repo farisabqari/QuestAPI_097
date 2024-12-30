@@ -10,7 +10,7 @@ Tampilan Home Screen
 
 Form Tambah Data Mahasiswa
 
-![form](https://github.com/user-attachments/assets/fd5559cb-ca25-4748-83bb-f83fe3f8983d)
+![form](https://github.com/user-attachments/assets/657153f8-ab9e-4fe6-8d7d-40998c4b887d)
 
 
 
