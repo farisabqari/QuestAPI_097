@@ -17,7 +17,6 @@ import com.example.myapplicationdatabase.ui.View.EntryMhsScreen
 import com.example.myapplicationdatabase.ui.View.HomeScreen
 import com.example.myapplicationdatabase.ui.View.UpdateScreen
 
-
 @Composable
 fun PengelolaHalaman(
     navController: NavHostController = rememberNavController()
@@ -29,7 +28,7 @@ fun PengelolaHalaman(
     ) {
         composable(DestinasiHome.route) {
             HomeScreen(
-                navigateToItemEntry = {navController.navigate(DestinasiEntry.route)},
+                navigateToItemEntry = { navController.navigate(DestinasiEntry.route) },
                 onDetailClick = { nim ->
                     navController.navigate("${DestinasiDetail.route}/$nim")
                 }
@@ -45,46 +44,6 @@ fun PengelolaHalaman(
                     }
                 }
             )
-        }
-        composable(
-            DestinasiDetail.routesWithArg,
-            arguments = listOf(
-                navArgument(DestinasiDetail.NIM) {
-                    type = NavType.StringType
-                }
-            )
-        ) {
-            val nim = it.arguments?.getString(DestinasiDetail.NIM)
-            nim?.let { nim ->
-                DetailScreen(
-                    navigateToItemUpdate = {
-                        navController.navigate("${DestinasiUpdate.route}/$nim")
-                    },
-                    navigateBack = {
-                        navController.navigate(DestinasiHome.route) {
-                            popUpTo(DestinasiHome.route) {
-                                inclusive = true
-                            }
-                        }
-                    }
-                )
-            }
-        }
-        composable(
-            DestinasiUpdate.routesWithArg,
-            arguments = listOf(
-                navArgument(DestinasiUpdate.NIM) {
-                    type = NavType.StringType
-                }
-            )
-        ) {
-            val nim = it.arguments?.getString(DestinasiUpdate.NIM)
-            nim?.let { nim ->
-                UpdateScreen(
-                    onBack = {navController.popBackStack()},
-                    onNavigate = {navController.popBackStack()}
-                )
-            }
         }
     }
 }
