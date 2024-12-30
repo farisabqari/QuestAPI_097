@@ -29,5 +29,21 @@ class DetailViewModel(
 
     private val _nim: String = checkNotNull(savedStateHandle[DestinasiDetail.NIM])
 
+    init {
+        getMahasiswabyNim()
+    }
 
+    fun getMahasiswabyNim() {
+        viewModelScope.launch {
+            mahasiswaDetailState = DetailUiState.Loading
+            mahasiswaDetailState = try {
+                val mahasiswa = mhs.getMahasiswaByNim(_nim)
+                DetailUiState.Success(mahasiswa)
+            } catch (e: IOException) {
+                DetailUiState.Error
+            } catch (e: HttpException) {
+                DetailUiState.Error
+            }
+        }
+    }
 }
