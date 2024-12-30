@@ -77,3 +77,31 @@ fun DetailScreen(
     }
 }
 
+@Composable
+fun DetailStatus(
+    retryAction: () -> Unit,
+    modifier: Modifier = Modifier,
+    detailUiState: DetailUiState
+) {
+    when (detailUiState) {
+        is DetailUiState.Loading -> OnLoading(modifier = modifier.fillMaxSize())
+
+        is DetailUiState.Success -> {
+            if (detailUiState.mahasiswa.nim.isEmpty()) {
+                Box(
+                    modifier = modifier.fillMaxSize(),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Text("Data tidak ditemukan.")
+                }
+            } else {
+                ItemDetailMhs(
+                    mahasiswa = detailUiState.mahasiswa,
+                    modifier = modifier.fillMaxWidth()
+                )
+            }
+        }
+
+        is DetailUiState.Error -> OnError(retryAction, modifier = modifier.fillMaxSize())
+    }
+}
